@@ -1,12 +1,12 @@
 #include<iostream>
-#include<string.h>
+#include<string>
 using namespace std;
 
 int main()
 {
-    char colour[20];
+    string colour;
     cout<<"what's your favourite colour?\n";
-    cin>>colour;
-    cout<<colour<<" is my favourite colour too.";
+    getline(cin,colour);
+    cout<<"Hey "<< colour<<" is my favourite colour too."<<endl;
     return 0;
 }
