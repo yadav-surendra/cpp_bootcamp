@@ -1,1 +1,1 @@
-this is a complete series of learning c++ to get ready for the DSA challenge. In this series, i've solved problems on important topics of C++. It will be helpful for someone who is willing to learn c++ from he very begining
+this is a complete series of learning c++ to get ready for the DSA challenge. In this series, i've solved problems on important topics of C++. It will be helpful for someone who is willing to learn c++ from the very begining
