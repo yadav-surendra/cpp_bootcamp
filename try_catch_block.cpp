@@ -13,9 +13,10 @@ int main()
         cout << "integer exception handled.\n";
     }catch(float f){
         cout << "float exception handled.\n";
-    }catch(...){
+    }catch(...){        //using three dot we set default message to the user in case of unknown error.
         cout<<"something went wrong..\n";
     }
 
+    cout<<"keep moving with the rest of the code.\n";
     return 0;
 }
