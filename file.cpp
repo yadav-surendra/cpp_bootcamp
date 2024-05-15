@@ -16,6 +16,7 @@ int maxbuff = 1024;
 char buff[maxbuff];
 
 FILE * fh = fopen(filename , "r");
+//fgets(place where data is copied,int size,file handler);
 while(fgets(buff,maxbuff,fh)) {
     fputs(buff,stdout);
 }
