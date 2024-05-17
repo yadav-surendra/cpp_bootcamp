@@ -5,9 +5,10 @@
 #include <ctime>
 #include <utility> 
 #include<tuple>
+//#include<exception>
 using namespace std;
 
-
+void start();
 void greet()
 {
     std::cout <<"====================\n";
@@ -15,6 +16,7 @@ void greet()
     std::cout <<"====================\n";
     std::cout <<"Instructions: Save your friend from being hanged by guesing the correct codeword.\n";
 }
+
 
 void display_misses(int misses)
 {
@@ -93,7 +95,7 @@ void display_misses(int misses)
 
 void display_status(vector<char> incorrect , string answer)
 {
-    cout<<"Incorret Gueesses: \n";
+    cout<<"Incorret Guesses: \n";
 
     for(int i=0 ; i<incorrect.size(); i++)
     {
@@ -110,14 +112,37 @@ void display_status(vector<char> incorrect , string answer)
 
 void end_game(string answer , string codeword)
 {
+    char key;
     if(answer == codeword)
     {
         cout<<"Horray!! you saved the person from being hanged and earned the medal.\n";
         cout<<"Congratulations\n";
+        cout<<"To continue press y. \n";
+        cin>>key;
+        if(key == 'y' || 'Y')
+        {
+            start();
+        }
+        else 
+        {
+          return;
+        }
     }
-    else{
+    else
+    {
         cout<<"Oh no! The man is hanged! \n";
         cout<<"you lost the game!\n\n";
+         cout<<"To continue press y. \n";
+         cin>>key;
+         if(key == 'y' || 'Y')
+         {
+             start();
+         }
+         else 
+        {
+        return;
+        }
+
     }
 }
 
@@ -133,7 +158,7 @@ void end_game(string answer , string codeword)
 // }
 
 
-//std::string getRandomWord() {
+
     std::pair<std::string, std::string> getRandomWord() {
     static std::vector<std::string> fruits = {
         "apple", "banana", "cherry", "date", "elderberry",
@@ -173,5 +198,50 @@ std::string generateUnderscoreString(int length) {
     // Return a string with 'length' underscores
     return std::string(length, '_');
 }
+
+void start(){
+    std::pair<std::string, std::string> code = getRandomWord();
+    string hint =code.second;
+    string codeword = code.first;
+    //string codeword = getRandomWord();
+    string answer = generateUnderscoreString(codeword.length());
+    int misses = 0;
+    vector<char> incorrect;
+    bool guess = false;
+    char letter;
+
+
+    while(answer != codeword && misses < 7)
+    {
+        display_misses(misses);
+        display_status(incorrect , answer);
+        cout<<"\nHint: "<< hint << "\n";
+        cout<< "\n\nPlease enter your guess: ";
+        cin>> letter;
+
+        for(int i=0; i<codeword.length(); i++)
+        {
+            if(letter == codeword[i])
+            {
+                answer[i] = letter;
+                guess = true;
+            }
+        }
+    if(guess)
+    {
+        cout<<"\nCorrect!\n";
+    }
+    else{
+        cout<<"\nInorrect! another portion of the person has been drawn.\n";
+        incorrect.push_back(letter);
+        misses++;
+    }
+    guess = false;
+    }
+
+    end_game(answer , codeword);
+
+}
+
 
 #endif 
