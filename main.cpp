@@ -7,9 +7,9 @@ using namespace std;
 int main()
 {
     greet();
-
-    string codeword = "coding";
-    string answer = "______";
+    string hint ;
+    string codeword = getRandomWord();
+    string answer = generateUnderscoreString(codeword.length());
     int misses = 0;
     vector<char> incorrect;
     bool guess = false;
