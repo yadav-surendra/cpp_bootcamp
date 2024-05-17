@@ -37,6 +37,10 @@ corner.push_back({5,6,7,8});
     for(int i=0; i< corner.size(); ++i){
         cout<< corner[i] << endl;
     }
+
+    vector<string> fruits={"mango","apple","litchi","coconut"};
+    cout<<fruits[2];
+
     return 0;
 
     

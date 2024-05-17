@@ -117,12 +117,24 @@ void end_game(string answer , string codeword)
     }
     else{
         cout<<"Oh no! The man is hanged! \n";
-        cout<<"you lost the game!\n";
+        cout<<"you lost the game!\n\n";
     }
 }
 
 //testing to improve
-std::string getRandomWord() {
+
+// string func(int a){
+//     if(a%2==0)
+//     {
+//         return "fruit";
+//     }
+//     else
+//     return "animal";
+// }
+
+
+//std::string getRandomWord() {
+    std::pair<std::string, std::string> getRandomWord() {
     static std::vector<std::string> fruits = {
         "apple", "banana", "cherry", "date", "elderberry",
         "fig", "grape", "honeydew", "kiwi", "lemon"
@@ -143,10 +155,15 @@ std::string getRandomWord() {
     //int randomIndex = std::rand() % fruits.size();
     if(randomIndex %2 == 0 )
     {
-        return fruits[randomIndex];
+        string first = fruits[randomIndex];
+        string second = "fruit";
+        return std::make_pair(first,second);
     }
     else{
-        return animals[randomIndex];
+        //return std::make_pair(animals[randomIndex],"animal");
+        string first = animals[randomIndex];
+        string second = "animal";
+        return std::make_pair(first,second);
     }
     
 

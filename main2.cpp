@@ -7,8 +7,11 @@ using namespace std;
 int main()
 {
     greet();
-    string hint ;
-    string codeword = getRandomWord();
+    
+    std::pair<std::string, std::string> code = getRandomWord();
+    string hint =code.second;
+    string codeword = code.first;
+    //string codeword = getRandomWord();
     string answer = generateUnderscoreString(codeword.length());
     int misses = 0;
     vector<char> incorrect;
@@ -20,7 +23,7 @@ int main()
     {
         display_misses(misses);
         display_status(incorrect , answer);
-
+        cout<<"\nHint: "<< hint << "\n";
         cout<< "\n\nPlease enter your guess: ";
         cin>> letter;
 
