@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+class shape{
+  protected:
+  float ar_sq;
+  float ar_rec;
+  
+  public:
+  shape(int a){
+    ar_sq = a*a;
+  }
+  shape(int a, int b){
+    ar_rec = a*b;
+  }
+};
+
+class square: public shape {
+  public:
+  square(int a): shape(a){
+    cout<<"inside square constructor "<<endl;
+  }
+  
+  void area(){
+    cout<<"area of sqaure is: "<<ar_sq<<endl;
+  }
+};
+
+class rect: public shape {
+  public:
+  rect(int a, int b): shape(a,b){
+    cout<<"inside rect constructor "<<endl;
+  }
+  
+  void area(){
+    cout<<"area of rectangle is: "<<ar_rec << endl;
+  }
+};
+
+
+int main() 
+{
+   square s(5);
+   rect r(2,5);
+   s.square::area();
+   r.rect::area();
+    return 0;
+}
